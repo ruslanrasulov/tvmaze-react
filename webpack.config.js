@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
     entry: {
-        index: './src/js/index.js'
+        index: './src/index.js'
     },
     output: {
         filename: '[name].js',

@@ -1,0 +1,48 @@
+$mainColor: #F55263;
+
+.SearchFilms-form {
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.SearchFilms-input {
+    width: 100%;
+    height: 45px;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding-left: 20px;
+    color: #ffffff;
+    border: 0;
+    border-bottom: 2px solid $mainColor;
+    box-sizing: border-box;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.SearchFilms-buttons {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: right;
+}
+
+.SearchFilms-submit-btn {
+    width: 150px;
+    height: 30px;
+    background-color: $mainColor;
+    border: 0;
+    border-radius: 1px;
+    font: {
+        weight: bold;
+        size: 12px;
+    }
+    text-transform: uppercase;
+    color: #ffffff;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,44 @@
+$captionColor:           #4C4C4C;
+$genresColor:            #ACACAC;
+$releaseYearBorderColor: #D3D3D3;
+
+%marginWithPadding {
+    margin-top: 7px;
+    padding: 0 5px 0 5px;
+}
+
+.ResultPreview-block {
+    display: inline-block;
+    margin: 30px 23px 30px 23px;
+    width: 220px;
+}
+
+.ResultPreview-image {
+    width: 100%;
+    height: auto;
+}
+
+.ResultPreview-caption {
+    @extend %marginWithPadding;
+
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: $captionColor;
+}
+
+.ResultPreview-release-year {
+    float: right;
+    margin-right: 5px;
+    font-size: 8px;
+    padding: 3px 3px 1px 3px;
+    border: 1px solid $releaseYearBorderColor;
+    border-radius: 1px;
+}
+ 
+.ResultPreview-genres {
+    @extend %marginWithPadding;
+
+    font-size: 10px;
+    color: $genresColor;
+}
