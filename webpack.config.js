@@ -11,7 +11,8 @@ const config = {
     },
     output: {
         filename: '[name].js',
-        path: outputPath
+        path: outputPath,
+        publicPath: '/'
     },
     module: {
         loaders: [
@@ -45,6 +46,7 @@ const config = {
         new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
+        historyApiFallback: true,
         contentBase: outputPath,
         port: 3000,
         inline: true,

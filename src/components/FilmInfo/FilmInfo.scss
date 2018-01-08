@@ -1,0 +1,58 @@
+$descriptionFontColor: #CFCFCF;
+
+%defaultText {
+    font-size: 14px;
+    font-weight: normal;
+    color: $descriptionFontColor;
+}
+
+.FilmInfo-block {
+    margin-top: 40px;
+}
+
+.FilmInfo-main-image {
+    float: left;
+}
+
+.FilmInfo-main-info {
+    margin-left: 260px;
+    margin-bottom: 30px;
+    
+    &::before {
+        content: ' ';
+        display: inline-block;
+        clear: both;
+    }
+}
+
+.FilmInfo-film-name {
+   font-size: 24px;
+}
+
+.FilmInfo-additional-info {
+    margin-top: 5px;
+    
+    @extend %defaultText;
+}
+
+.FilmInfo-year-and-duration {
+    margin-top: 15px;
+    color: #ffffff;
+}
+
+.FilmInfo-duration {
+    margin-left: 25px;
+}
+
+.FilmInfo-director,
+.FilmInfo-description {
+    margin-top: 30px;
+    
+    @extend %defaultText;
+}
+
+.FilmInfo-cast {
+    margin-top: 15px;
+    
+    @extend %defaultText;
+}

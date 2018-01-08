@@ -14,7 +14,6 @@ export default class SearchResult extends Component {
 
     componentDidMount() {
         this.fillResults();
-        console.log(this.state.results);
     }
 
     fillResults() {

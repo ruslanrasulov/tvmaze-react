@@ -1,0 +1,24 @@
+$mainColor: #F55263;
+$fontColor: #FFFFFF;
+
+.SearchLink {
+    float: right;
+
+    &:active,
+    &:hover,
+    &:link,
+    &:visited {
+        text-decoration: none;
+    }
+
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    color: $mainColor;
+    background-color: $fontColor;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 2px;
+}
