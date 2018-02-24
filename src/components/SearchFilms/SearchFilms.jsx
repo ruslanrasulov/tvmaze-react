@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Redirect, Switch, Route } from 'react-router-dom'; 
+import { Redirect, Switch, Route, withRouter } from 'react-router-dom'; 
 
 import styles from './SearchFilms.scss';
 
-export default class SearchFilms extends Component {
+class SearchFilms extends Component {
     constructor(props) {
         super(props);
 
@@ -19,10 +19,7 @@ export default class SearchFilms extends Component {
     submitForm(e) {
         e.preventDefault();
 
-        this.setState({
-            fireRedirect: true,
-            query: this.input.value
-        });
+        this.props.history.push(`/search/${this.input.value}`);
     } 
 
     render() {
@@ -35,8 +32,9 @@ export default class SearchFilms extends Component {
                 <div className="SearchFilms-buttons">
                     <button type="submit" className="SearchFilms-submit-btn">Search</button>
                 </div>
-                {fireRedirect && <Redirect to={`/search/${query}`} />}
             </form>
         );
     }
 }
+
+export default withRouter(SearchFilms);
