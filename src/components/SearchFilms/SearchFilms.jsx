@@ -16,7 +16,7 @@ class SearchFilms extends Component {
         this.input.value = this.props.match.params.query || '';
     }
 
-    submitForm(e) {
+    submitForm = (e) => {
         e.preventDefault();
 
         this.props.history.push(`/search/${this.input.value}`);
@@ -26,7 +26,7 @@ class SearchFilms extends Component {
         const { fireRedirect, query } = this.state;
 
         return (
-            <form action="/search/" method="GET" className="SearchFilms-form" onSubmit={(e) => this.submitForm(e)}>
+            <form action="/search/" method="GET" className="SearchFilms-form" onSubmit={this.submitForm}>
                 <label htmlFor="search-movie-input">Find your movie</label>
                 <input type="text" id="search-movie-input" className="SearchFilms-input" name="query" ref={node => this.input = node}/>
                 <div className="SearchFilms-buttons">
