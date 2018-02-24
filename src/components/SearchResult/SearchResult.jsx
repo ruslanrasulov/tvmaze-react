@@ -20,7 +20,7 @@ export default class SearchResult extends Component {
         for (let i = 0; i < 10; i++) {
             this.setState((prevState) => {
                 return {
-                    results: [...prevState.results, <ResultPreview key={i} />]
+                    results: [...prevState.results, <ResultPreview key={i} id={i} />]
                 }
             });
         }
