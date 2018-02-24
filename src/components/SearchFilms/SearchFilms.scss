@@ -45,4 +45,7 @@ $mainColor: #F55263;
     &:hover {
         cursor: pointer;
     }
+    &:focus {
+        outline: 0;
+    }
 }
