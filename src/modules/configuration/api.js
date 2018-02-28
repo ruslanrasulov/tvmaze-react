@@ -10,7 +10,7 @@ export const getShows = (pageNumber = 0) => {
 export const searchShows = (query) => {
     axios.get(`http://api.tvmaze.com/search/shows?q=${query}`)
         .then(response => {
-            console.log(response);
+            console.log(response)
         });
 };
 
