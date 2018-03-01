@@ -1,0 +1,1 @@
+export const getFilmInfo = (store) => (store.shows.filmInfo);
