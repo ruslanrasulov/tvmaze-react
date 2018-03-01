@@ -1,1 +1,1 @@
-export const getFilmInfo = (store) => (store.shows.filmInfo);
+export const getFilmInfo = (state) => ( {...state.shows.filmInfo} );

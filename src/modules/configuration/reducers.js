@@ -8,7 +8,10 @@ const mapFilmInfo = ({ data }) => ({
     name: data.name,
     genres: data.genres,
     year: data.premiered,
-    imageUrl: data.image.medium
+    imageUrl: data.image.medium,
+    duration: data.runtime,
+    director: "Quentin Tarantino",
+    description: data.summary
 });
 
 const mapSearchResults = ({ data }) => (
@@ -17,9 +20,7 @@ const mapSearchResults = ({ data }) => (
         name: show.name,
         genres: show.genres,
         year: show.premiered,
-        imageUrl: show.image.medium,
-        duration: show.runtime,
-        director: "Quentin Tarantino"
+        imageUrl: show.image.medium
     }))
 );
 
