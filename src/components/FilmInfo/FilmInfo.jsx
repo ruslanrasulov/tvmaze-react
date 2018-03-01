@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import styles from './FilmInfo.scss';
 
-export default class FilmInfo extends Component {
+class FilmInfo extends Component {
     render() {
         return (
             <div className="FilmInfo-block">
@@ -25,3 +25,5 @@ export default class FilmInfo extends Component {
         );
     }
 }
+
+export default withRouter(FilmInfo);

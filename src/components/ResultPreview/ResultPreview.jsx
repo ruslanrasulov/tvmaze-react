@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import styles from './ResultPreview.scss';
 
-export default class ResultPreview extends Component {
+class ResultPreview extends Component {
     render() {
         return (
             <Link to={`/film/${this.props.id}`}>
@@ -21,3 +21,5 @@ export default class ResultPreview extends Component {
         );
     }
 }
+
+export default withRouter(ResultPreview);

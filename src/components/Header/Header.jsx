@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import * as actionTypes from './../../modules/configuration/acitonTypes.js';
@@ -21,7 +21,8 @@ class Header extends Component {
                         <Switch>
                             <Route path="/film/:filmId" component={ FilmInfo } />
                             <Route path="/search/:query" exact render={(...props) => <SearchFilms searchFilms={this.props.searchFilms} {...props}/>} />
-                            <Route path="/" component={ SearchFilms } />
+                            <Route path="/search/" exact render={(...props) => <SearchFilms searchFilms={this.props.searchFilms} {...props}/>} />
+                            <Route path="/" exact render={(...props) => <SearchFilms searchFilms={this.props.searchFilms} {...props}/>} />
                         </Switch>
                     </div>
                 </div>
@@ -47,7 +48,9 @@ const mapDispatchToProps = (dispatch) => ({
     )
 })
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Header)
+export default withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(Header)
+);
