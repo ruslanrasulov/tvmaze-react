@@ -17,9 +17,12 @@ class Header extends Component {
                 <div className="Header-content">
                     <div className="Header-name">
                         TVmaze
+                        {/* TODO: combine SearchLink with FilmInfo */}
                         <Route path="/film/:filmId" component={ SearchLink } />
                         <Switch>
                             <Route path="/film/:filmId" component={ FilmInfo } />
+
+                            {/* Exctract SearchFilms render to an another function */}
                             <Route path="/search/:query" exact render={(...props) => <SearchFilms searchFilms={this.props.searchFilms} {...props}/>} />
                             <Route path="/search/" exact render={(...props) => <SearchFilms searchFilms={this.props.searchFilms} {...props}/>} />
                             <Route path="/" exact render={(...props) => <SearchFilms searchFilms={this.props.searchFilms} {...props}/>} />
@@ -35,6 +38,7 @@ const mapStateToProps = ({ filmInfo }) => ({
     filmInfo
 });
 
+{/* TODO: Move action creator to an another file */}
 const searchFilms = (query) => (dispatch) => {
     axios.get(`http://api.tvmaze.com/search/shows?q=${query}`)
         .then(response => {
