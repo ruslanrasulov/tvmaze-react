@@ -20,7 +20,7 @@ class Header extends Component {
                         <Route path="/film/:filmId" component={ SearchLink } />
                         <Switch>
                             <Route path="/film/:filmId" component={ FilmInfo } />
-                            <Route path="/search/:query" exact render={(props) => <SearchFilms searchFilms={this.props.searchFilms} {...props}/>} />
+                            <Route path="/search/:query" exact render={(...props) => <SearchFilms searchFilms={this.props.searchFilms} {...props}/>} />
                             <Route path="/" component={ SearchFilms } />
                         </Switch>
                     </div>

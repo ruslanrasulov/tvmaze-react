@@ -4,8 +4,8 @@
   "description": "Implementing Tvmaze API with ReactJS",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack-dev-server --color"
+    "build": "set NODE_ENV=production && webpack",
+    "start": "set NODE_ENV=development && webpack-dev-server --color"
   },
   "repository": {
     "type": "git",
