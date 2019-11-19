@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import axios from 'axios';
+import * as actionTypes from './../../modules/configuration/acitonTypes.js';
 
 import { getFilmInfo } from './../../modules/configuration/selectors.js';
 import styles from './FilmInfo.scss';
 
 class FilmInfo extends Component {
+    componentDidMount() {
+        if (!this.props.filmInfo.name) {
+            const filmId = this.props.match.params.filmId || '';
+
+            if (filmId) {
+                this.props.getFilmInfoFromApi(filmId);
+            }
+        }
+    }
+
     render() {
         const { filmInfo } = this.props;
 
@@ -16,19 +28,26 @@ class FilmInfo extends Component {
                     <div className="FilmInfo-film-name">{filmInfo.name}</div>
                     <div className="FilmInfo-additional-info">Oscar-winning Movies</div>
                     <div className="FilmInfo-year-and-duration">
-                        <span className="FilmInfo-release-year">{filmInfo.year}</span>
-                        <span className="FilmInfo-duration">{filmInfo.duration} min</span>
+                        <span className="FilmInfo-release-year">Release date: {filmInfo.year}</span>
+                        <span className="FilmInfo-duration">Duration: {filmInfo.duration} min</span>
                     </div>
                     <p className="FilmInfo-description">{filmInfo.description}</p>
-                    <p className="FilmInfo-director">Director: {filmInfo.director}</p>
-                    <p className="FilmInfo-cast">
-                        Cast: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat ad reprehenderit praesentium modi error dolores minus non voluptatibus. Ad necessitatibus officiis veritatis ab esse aut harum inventore debitis dolor deserunt.
-                    </p>
+                    <p className="FilmInfo-genres">Genres: {filmInfo.genres}</p>
+                    <p className="FilmInfo-cast">Cast: {filmInfo.cast}</p>
                 </main>
             </div>
         );
     }
 }
+
+const mapDispatchToProps = dispatch => ({
+    getFilmInfoFromApi: function (id) {
+        axios.get(`http://api.tvmaze.com/shows/${id}?embed=cast`)
+        .then(response => {
+            dispatch({ type: actionTypes.SHOW_FILM_INFO_BY_ID, payload: {...response } });
+        });
+    }
+});
 
 const mapStateToProps = (state) => ({
     filmInfo: getFilmInfo(state)
@@ -37,6 +56,6 @@ const mapStateToProps = (state) => ({
 export default withRouter(
     connect(
         mapStateToProps,
-        null
+        mapDispatchToProps
     )(FilmInfo)
 );

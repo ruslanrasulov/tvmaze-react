@@ -26,7 +26,7 @@ class SearchResult extends Component {
                         searchFilmById={searchFilmById} 
                     />
         })
-        console.log(this.props);
+
         return (
             <div className="SearchResult-container">
                 {results}
@@ -36,8 +36,9 @@ class SearchResult extends Component {
 }
 
 const searchFilmById = (id) => (dispatch) => {
-    axios.get(`http://api.tvmaze.com/shows/${id}`)
+    axios.get(`http://api.tvmaze.com/shows/${id}?embed=cast`)
         .then(response => {
+            console.log(response);
             dispatch({ type: actionTypes.SHOW_FILM_INFO_BY_ID, payload: {...response } });
         });
 }

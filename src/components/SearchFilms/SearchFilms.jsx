@@ -10,7 +10,7 @@ class SearchFilms extends Component {
 
     componentDidMount() {
         this.input.value = this.props.match.params.query || '';
-        
+
         if (this.input.value) {
             this.props.searchFilms(this.input.value);
         }
