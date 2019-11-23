@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Header from '../Header/Header.jsx';
@@ -13,7 +12,7 @@ class App extends Component {
                 <Header />
                 <SearchResult />
                 <Footer />
-            </section>  
+            </section>
         );
     }
 }

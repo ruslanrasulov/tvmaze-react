@@ -18,7 +18,7 @@ const mapSearchResults = ({ data }) => (
     map(data, ({ show }) => ({
         id: show.id,
         name: show.name,
-        genres: show.genres,
+        genres: show.genres.join(', '),
         year: show.premiered,
         imageUrl: show.image && show.image.medium
     }))

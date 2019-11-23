@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import axios from 'axios';
-import * as actionTypes from './../../modules/configuration/acitonTypes.js';
 
-import { getFilmInfo } from './../../modules/configuration/selectors.js';
+import { getFilmByIdAction } from '../../modules/configuration/actions';
+import { getFilmInfo } from '../../modules/configuration/selectors';
+
 import styles from './FilmInfo.scss';
 
 class FilmInfo extends Component {
@@ -41,16 +41,11 @@ class FilmInfo extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    getFilmInfoFromApi: function (id) {
-        axios.get(`http://api.tvmaze.com/shows/${id}?embed=cast`)
-        .then(response => {
-            dispatch({ type: actionTypes.SHOW_FILM_INFO_BY_ID, payload: {...response } });
-        });
-    }
+    getFilmInfoFromApi: (id) => getFilmByIdAction(dispatch, id)
 });
 
 const mapStateToProps = (state) => ({
-    filmInfo: getFilmInfo(state)
+    filmInfo: {...getFilmInfo(state)}
 });
 
 export default withRouter(
