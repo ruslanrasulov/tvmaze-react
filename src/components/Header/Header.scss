@@ -8,6 +8,7 @@ $bgGradient: rgba(0, 0, 0, 0.7);
         $bgGradient
     ), url($bgPath) no-repeat center;
     background-size: cover;
+    height: auto;
 }
 
 .Header-content {

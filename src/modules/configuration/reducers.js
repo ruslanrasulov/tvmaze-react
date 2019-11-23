@@ -8,7 +8,7 @@ const mapFilmInfo = ({ data }) => ({
     name: data.name,
     genres: data.genres.join(', '),
     year: data.premiered,
-    imageUrl: data.image.medium,
+    imageUrl: data.image && data.image.medium,
     duration: data.runtime,
     description: data.summary.replace(/<[^>]*>?/gm, ''),
     cast: data._embedded.cast.map(c => c.person.name).join(', ')
@@ -20,7 +20,7 @@ const mapSearchResults = ({ data }) => (
         name: show.name,
         genres: show.genres,
         year: show.premiered,
-        imageUrl: show.image.medium
+        imageUrl: show.image && show.image.medium
     }))
 );
 

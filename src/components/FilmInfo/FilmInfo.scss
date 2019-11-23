@@ -17,11 +17,11 @@ $descriptionFontColor: #CFCFCF;
 .FilmInfo-main-info {
     margin-left: 260px;
     margin-bottom: 30px;
-    
-    &::before {
+
+    &:after {
         content: ' ';
-        display: inline-block;
         clear: both;
+        display: block;
     }
 }
 
@@ -55,4 +55,8 @@ $descriptionFontColor: #CFCFCF;
     margin-top: 15px;
     
     @extend %defaultText;
+}
+
+.FilmInfo-genres {
+    margin-top: 10px;
 }

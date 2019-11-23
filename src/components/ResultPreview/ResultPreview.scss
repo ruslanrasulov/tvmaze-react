@@ -11,10 +11,13 @@ $releaseYearBorderColor: #D3D3D3;
     display: inline-block;
     margin: 30px 23px 30px 23px;
     width: 220px;
+    height: 400px;
+    overflow: hidden;
 }
 
 .ResultPreview-image {
     width: 100%;
+    min-height: 310px;
     height: auto;
 }
 

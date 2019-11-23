@@ -9,8 +9,8 @@ class ResultPreview extends Component {
     render() {
         const {filmInfo, searchFilmById } = this.props;
         return (
-            <Link to={`/film/${filmInfo.id}`} onClick={() => { searchFilmById(filmInfo.id); }}>
-                <div className="ResultPreview-block">
+            <Link className="ResultPreview-block" to={`/film/${filmInfo.id}`} onClick={() => { searchFilmById(filmInfo.id); }}>
+                <div>
                     <img src={filmInfo.imageUrl} className="ResultPreview-image" alt="Preview Image"/>
                     <div className="ResultPreview-caption">
                         <span className="ResultPreview-film-name">{filmInfo.name}</span>

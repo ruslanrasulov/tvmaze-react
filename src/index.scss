@@ -1,5 +1,13 @@
 @import '../node_modules/reset-css/_reset';
 
+a,
+a:link,
+a:hover,
+a:visited,
+a:active {
+    text-decoration: none;
+}
+
 html {
     min-height: 100%;
     position: relative;
