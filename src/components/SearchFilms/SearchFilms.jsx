@@ -1,33 +1,35 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'; 
+import { connect } from 'react-redux';
 
-import styles from './SearchFilms.scss';
+import { searchFilmsAction } from '../../modules/configuration/actions';
+
+import _ from './SearchFilms.scss';
 
 class SearchFilms extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
-        this.input.value = this.props.match.params.query || '';
+        const { match, searchFilms } = this.props;
+        this.input.value = match.params.query || '';
 
         if (this.input.value) {
-            this.props.searchFilms(this.input.value);
+            searchFilms(this.input.value);
         }
     }
 
     submitForm = (e) => {
+        const { history, searchFilms } = this.props;
+        
         e.preventDefault();
 
-        this.props.history.push(`/search/${this.input.value}`);
-        this.props.searchFilms(this.input.value);
+        history.push(`/search/${this.input.value}`);
+        searchFilms(this.input.value);
     } 
 
     render() {
         return (
             <form action="/search/" method="GET" className="SearchFilms-form" onSubmit={this.submitForm}>
-                <label htmlFor="search-movie-input">Find your movie</label>
-                <input type="text" id="search-movie-input" className="SearchFilms-input" name="query" ref={node => this.input = node}/>
+                <label htmlFor="search_movie_input">Find your movie</label>
+                <input type="text" id="search_movie_input" className="SearchFilms-input" name="query" ref={node => this.input = node}/>
                 <div className="SearchFilms-buttons">
                     <button type="submit" className="SearchFilms-submit-btn">Search</button>
                 </div>
@@ -36,4 +38,12 @@ class SearchFilms extends Component {
     }
 }
 
-export default withRouter(SearchFilms);
+const mapDispatchToProps = dispatch => ({
+    searchFilms: query => searchFilmsAction(dispatch, query)
+});
+
+export default withRouter(
+    connect(
+        null,
+        mapDispatchToProps)
+(SearchFilms));

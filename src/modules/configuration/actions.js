@@ -8,5 +8,5 @@ export const searchFilmsAction = (dispatch, query) => {
 
 export const getFilmByIdAction = (dispatch, id) => {
     api.getShowById(id)
-        .then(shows => dispatch({ type: actionTypes.SHOW_FILM_INFO_BY_ID, payload: {...shows } }));
+        .then(show => dispatch({ type: actionTypes.SHOW_FILM_INFO_BY_ID, payload: show }));
 };

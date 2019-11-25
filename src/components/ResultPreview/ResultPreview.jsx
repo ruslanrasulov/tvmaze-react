@@ -1,26 +1,36 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React  from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import styles from './ResultPreview.scss';
+import { getSearchResultById } from '../../modules/configuration/selectors';
+import { getFilmByIdAction } from '../../modules/configuration/actions';
 
-class ResultPreview extends Component {
-    render() {
-        const { filmInfo, searchFilmById } = this.props;
-        return (
-            <Link className="ResultPreview-block" to={`/film/${filmInfo.id}`} onClick={() => { searchFilmById(filmInfo.id); }}>
-                <div>
-                    <img src={filmInfo.imageUrl} className="ResultPreview-image" alt="Preview Image"/>
-                    <div className="ResultPreview-caption">
-                        <span className="ResultPreview-film-name">{filmInfo.name}</span>
-                        <span className="ResultPreview-release-year">{filmInfo.year}</span>
-                    </div>
-                    <div className="ResultPreview-genres">
-                        {filmInfo.genres}
-                    </div>
-                </div>
-            </Link>
-        );
-    }
-}
+import _ from './ResultPreview.scss';
 
-export default withRouter(ResultPreview);
+const ResultPreview = ({ filmInfo, searchFilmById }) => (
+    <Link className="ResultPreview-block" to={`/film/${filmInfo.id}`} onClick={() => { searchFilmById(filmInfo.id); }}>
+        <div>
+            <img src={filmInfo.imageUrl} className="ResultPreview-image" alt="Preview Image"/>
+            <div className="ResultPreview-caption">
+                <span className="ResultPreview-film-name">{filmInfo.name}</span>
+                <span className="ResultPreview-release-year">{filmInfo.year}</span>
+            </div>
+            <div className="ResultPreview-genres">
+                {filmInfo.genres}
+            </div>
+        </div>
+    </Link>
+);
+
+const mapStateToProps = (state, props) => ({
+    filmInfo: getSearchResultById(state, props.filmId)
+});
+
+const mapDispatchToProps = dispatch => ({
+    searchFilmById: id => getFilmByIdAction(dispatch, id)
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps)
+(ResultPreview);

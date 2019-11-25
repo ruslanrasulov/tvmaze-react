@@ -13,6 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 
 const configureStore = () => (
-    createStore(reducers, composeEnhancers(applyMiddleware(promise, logger, thunk))));
+    createStore(reducers, composeEnhancers(applyMiddleware(promise, logger, thunk)))
+);
 
 export default configureStore;

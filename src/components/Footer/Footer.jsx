@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
+import _ from './Footer.scss';
 
-import styles from './Footer.scss';
+const Footer = () => (
+    <footer className="Footer-block">
+        <div className="Footer-name">TVmaze</div>
+    </footer>
+);
 
-export default class Footer extends Component {
-    render() {
-        return (
-            <footer className="Footer-block">
-                <div className="Footer-name">TVmaze</div>
-            </footer>
-        );
-    }
-}
+export default Footer;

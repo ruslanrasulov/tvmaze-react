@@ -1,8 +1,3 @@
-export const getFilmInfo = (state) => state.shows.filmInfo;
-export const getSearchResults = state => (state.shows.searchResults || []).map(r => ({
-    id: r.id,
-    name: r.name,
-    genres: r.genres,
-    year: r.year,
-    imageUrl: r.imageUrl
-}));
+export const getFilmInfo = state => state.shows.filmInfo;
+export const getSearchResultIds = state => (state.shows.searchResults || []).map(r => r.id);
+export const getSearchResultById = (state, id) => state.shows.searchResults.find(sr => sr.id == id);

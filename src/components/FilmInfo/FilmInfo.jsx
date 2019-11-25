@@ -5,21 +5,27 @@ import { connect } from 'react-redux';
 import { getFilmByIdAction } from '../../modules/configuration/actions';
 import { getFilmInfo } from '../../modules/configuration/selectors';
 
-import styles from './FilmInfo.scss';
+import _ from './FilmInfo.scss';
 
 class FilmInfo extends Component {
     componentDidMount() {
-        if (!this.props.filmInfo.name) {
-            const filmId = this.props.match.params.filmId || '';
+        const { filmInfo, match, getFilmInfoFromApi } = this.props;
+
+        if (!filmInfo) {
+            const filmId = match.params.filmId || '';
 
             if (filmId) {
-                this.props.getFilmInfoFromApi(filmId);
+                getFilmInfoFromApi(filmId);
             }
         }
     }
 
     render() {
         const { filmInfo } = this.props;
+
+        if (!filmInfo) {
+            return (<div />);
+        }
 
         return (
             <div className="FilmInfo-block">
@@ -44,8 +50,8 @@ const mapDispatchToProps = dispatch => ({
     getFilmInfoFromApi: (id) => getFilmByIdAction(dispatch, id)
 });
 
-const mapStateToProps = (state) => ({
-    filmInfo: {...getFilmInfo(state)}
+const mapStateToProps = state => ({
+    filmInfo: getFilmInfo(state)
 });
 
 export default withRouter(

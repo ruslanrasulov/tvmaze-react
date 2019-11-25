@@ -1,25 +1,25 @@
-$mainColor: #F55263;
+@import '../../themeColors';
+
 $bgPath: './images/netflix-bg.jpg';
 $bgGradient: rgba(0, 0, 0, 0.7);
 
-.Header-block {
-    background: linear-gradient(
-        $bgGradient,
-        $bgGradient
-    ), url($bgPath) no-repeat center;
-    background-size: cover;
-    height: auto;
-}
-
-.Header-content {
-    width: 800px;
-    margin: 0 auto;
-}
-
-.Header-name {
-    font: {
-        weight: bold;
+.Header {
+    &-block {
+        background: linear-gradient($bgGradient,$bgGradient), url($bgPath) no-repeat center;
+        background-size: cover;
     }
-    color: $mainColor;
-    padding: 10px 0 10px 0;
+
+    &-content {
+        width: 800px;
+        margin: 0 auto;
+    }
+
+    &-name {
+        font: {
+            weight: bold;
+        }
+
+        color: $mainColor;
+        padding: 10px 0 10px 0;
+    }
 }
