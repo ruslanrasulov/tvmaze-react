@@ -6,19 +6,17 @@ import { getSearchResultIds } from '../../modules/configuration/selectors';
 import ResultPreview from '../ResultPreview/ResultPreview.jsx';
 import _ from './SearchResult.scss';
 
-class SearchResult extends Component { 
-    render() {
-        const { searchResultIds } = this.props;
-        const results = searchResultIds && searchResultIds.map(id => (
-            <ResultPreview key={id} filmId={id} />
-        ));
+const SearchResult = props => {
+    const { searchResultIds } = props;
+    const results = searchResultIds && searchResultIds.map(id => (
+        <ResultPreview key={id} filmId={id} />
+    ));
 
-        return (
-            <div className="SearchResult-container">
-                {results}
-            </div>
-        );
-    }
+    return (
+        <div className="SearchResult-container">
+            {results}
+        </div>
+    );
 }
 
 const mapStateToProps = state => ({
