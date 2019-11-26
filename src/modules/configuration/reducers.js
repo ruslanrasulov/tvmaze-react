@@ -15,8 +15,8 @@ const mapFilmInfo = ({ data }) => ({
 });
 
 const filmsSchema = new schema.Entity('shows', {}, { 
-    idAttribute: 'id',
-    processStrategy: show => ({
+    idAttribute: d => d.show.id,
+    processStrategy: ({ show }) => ({
         id: show.id,
         name: show.name,
         genres: show.genres && show.genres.join(', '),
@@ -28,7 +28,7 @@ const filmsSchema = new schema.Entity('shows', {}, {
 const filmsArraySchema = [filmsSchema];
 
 const mapSearchResults = ({ data }) => {
-    const normalizedData = normalize(data.map(d => d.show), filmsArraySchema);
+    const normalizedData = normalize(data, filmsArraySchema);
 
     return {
         allIds: normalizedData.result,
