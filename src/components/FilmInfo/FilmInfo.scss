@@ -1,0 +1,66 @@
+@import '../../themeColors';
+
+$descriptionFontColor: #CFCFCF;
+
+%defaultText {
+    font-size: 14px;
+    font-weight: normal;
+    color: $descriptionFontColor;
+}
+
+.FilmInfo {
+    &-block {
+        margin-top: 40px;
+    }
+
+    &-main-image {
+        float: left;
+    }
+
+    &-main-info {
+        margin-left: 260px;
+        margin-bottom: 30px;
+
+        &:after {
+            content: ' ';
+            clear: both;
+            display: block;
+        }
+    }
+
+    &-film-name {
+        font-size: 24px;
+    }
+
+    &-additional-info {
+        margin-top: 5px;
+
+        @extend %defaultText;
+    }
+
+    &-year-and-duration {
+        margin-top: 15px;
+        color: $fontColor;
+    }
+
+    &-duration {
+        margin-left: 25px;
+    }
+
+    &-director,
+    &-description {
+        margin-top: 30px;
+
+        @extend %defaultText;
+    }
+
+    &-cast {
+        margin-top: 15px;
+
+        @extend %defaultText;
+    }
+
+    &-genres {
+        margin-top: 10px;
+    }
+}

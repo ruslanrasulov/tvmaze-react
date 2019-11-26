@@ -1,0 +1,22 @@
+@import '../node_modules/reset-css/_reset';
+
+* {
+    box-sizing: border-box;
+}
+
+a,
+a:link,
+a:hover,
+a:visited,
+a:active {
+    text-decoration: none;
+}
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+.container {
+    font-family: Arial, Helvetica, sans-serif;
+}
