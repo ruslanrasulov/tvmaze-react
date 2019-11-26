@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { map } from 'lodash';
+import { schema, normalize } from 'normalizr';
 
 import * as actionTypes from './acitonTypes.js';
 
@@ -14,15 +14,27 @@ const mapFilmInfo = ({ data }) => ({
     cast: data._embedded.cast.map(c => c.person.name).join(', ')
 });
 
-const mapSearchResults = ({ data }) => (
-    map(data, ({ show }) => ({
+const filmsSchema = new schema.Entity('shows', {}, { 
+    idAttribute: 'id',
+    processStrategy: show => ({
         id: show.id,
         name: show.name,
-        genres: show.genres.join(', '),
+        genres: show.genres && show.genres.join(', '),
         year: show.premiered,
         imageUrl: show.image && show.image.medium
-    }))
-);
+    })
+});
+
+const filmsArraySchema = [filmsSchema];
+
+const mapSearchResults = ({ data }) => {
+    const normalizedData = normalize(data.map(d => d.show), filmsArraySchema);
+
+    return {
+        allIds: normalizedData.result,
+        byId: normalizedData.entities.shows
+    };
+}
 
 export default combineReducers({
     shows: (state = { }, action) => {

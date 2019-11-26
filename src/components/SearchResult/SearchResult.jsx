@@ -9,7 +9,7 @@ import _ from './SearchResult.scss';
 class SearchResult extends Component { 
     render() {
         const { searchResultIds } = this.props;
-        const results = searchResultIds.map(id => (
+        const results = searchResultIds && searchResultIds.map(id => (
             <ResultPreview key={id} filmId={id} />
         ));
 
